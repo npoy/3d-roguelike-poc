@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ypd2w5ewo5cd"]
+[gd_scene load_steps=7 format=3 uid="uid://ypd2w5ewo5cd"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_b25lt"]
+[ext_resource type="Script" path="res://player.gd" id="1_b25lt"]
+[ext_resource type="Script" path="res://main.gd" id="1_n2rh3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bjknu"]
 
@@ -13,9 +14,11 @@ albedo_color = Color(0.792157, 0, 0.105882, 1)
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_n2rh3")
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -1, -4.5)
+use_collision = true
 size = Vector3(10, 1, 10)
 
 [node name="Player" type="CharacterBody3D" parent="."]
@@ -24,12 +27,14 @@ script = ExtResource("1_b25lt")
 metadata/_edit_group_ = true
 
 [node name="Body" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_bjknu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oqqhj")
 
-[node name="Eyes" type="MeshInstance3D" parent="Player"]
+[node name="Eyes" type="MeshInstance3D" parent="Player/Body"]
 transform = Transform3D(0.376923, 0, 0, 0, 0.317702, 0, 0, 0, 0.70389, 0.346172, 0.532283, -0.0252657)
 mesh = SubResource("BoxMesh_b0100")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_hlyy5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
