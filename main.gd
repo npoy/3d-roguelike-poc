@@ -10,7 +10,7 @@ func _physics_process(delta):
 	#print_debug("Mouse position: ", mouse_position)
 	#print_debug("ray_origin: ", ray_origin)
 	#print_debug("ray_target: ", ray_target)
-	
+
 	var ray_query = PhysicsRayQueryParameters3D.create(ray_origin, ray_target)
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var intersection: Dictionary = space_state.intersect_ray(ray_query)
