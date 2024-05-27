@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ypd2w5ewo5cd"]
+[gd_scene load_steps=9 format=3 uid="uid://ypd2w5ewo5cd"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b25lt"]
 [ext_resource type="Script" path="res://main.gd" id="1_n2rh3"]
+[ext_resource type="Script" path="res://gun_controller.gd" id="3_0gorf"]
+[ext_resource type="PackedScene" uid="uid://wtm5dukm7v4r" path="res://gun.tscn" id="4_5xw04"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bjknu"]
 
@@ -22,7 +24,7 @@ use_collision = true
 size = Vector3(10, 1, 10)
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89565, 0.527799, -5.25015)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.89565, 0.527799, -5.25015)
 script = ExtResource("1_b25lt")
 metadata/_edit_group_ = true
 
@@ -32,12 +34,19 @@ mesh = SubResource("CapsuleMesh_bjknu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oqqhj")
 
 [node name="Eyes" type="MeshInstance3D" parent="Player/Body"]
-transform = Transform3D(0.376923, 0, 0, 0, 0.317702, 0, 0, 0, 0.70389, 0.346172, 0.532283, -0.0252657)
+transform = Transform3D(0.376923, 0, 0, 0, 0.317702, 0, 0, 0, 0.70389, 0.346172, 0.532283, -0.0252652)
 mesh = SubResource("BoxMesh_b0100")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_hlyy5")
 
+[node name="Hand" type="Marker3D" parent="Player/Body"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3884, 0.237456, 0.458858)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+
+[node name="GunController" type="Node" parent="Player"]
+script = ExtResource("3_0gorf")
+starting_weapon = ExtResource("4_5xw04")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.997682, -0.0309914, 0.0605834, 0.040698, 0.441777, 0.896201, -0.0545389, 0.896589, -0.439492, 4.55409, 5.11564, -13.576)
