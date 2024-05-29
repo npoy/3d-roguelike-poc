@@ -3,10 +3,12 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@onready var gun_controller = $GunController
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _physics_process(delta):
+func _process(delta):
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity.y -= gravity * delta
@@ -28,3 +30,10 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	if Input.is_action_pressed("primary_action"):
+		"""
+			TODO: we shoudln't even have this controller here.
+			This needs to be refactored to use the corresponding pattern
+		"""
+		gun_controller.shoot()

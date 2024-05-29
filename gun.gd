@@ -1,14 +1,14 @@
 extends Node3D
 
 @export var bullet: PackedScene
-@export var muzzle_speed = 30
-@export var time_between_shots = 100 # In milliseconds
+@export var muzzle_speed: int = 30
+@export var time_between_shots: int = 50 # In milliseconds
 @onready var timer: Timer = $Timer
 
 var can_shoot: bool = true
 
-func _process(delta):
-	shoot()
+func _ready():
+	timer.wait_time = time_between_shots / 1000.0
 	
 func shoot():
 	if can_shoot == true:
