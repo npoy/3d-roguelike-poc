@@ -17,3 +17,7 @@ func _physics_process(delta):
 	
 func _on_timer_timeout():
 	queue_free()
+
+func _on_area_3d_body_entered(body):
+	print_debug("hit: ", body)
+	queue_free()
