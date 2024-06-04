@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://befkpl350d4q1"]
+[gd_scene load_steps=5 format=3 uid="uid://befkpl350d4q1"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_queeo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fvu3q"]
 
@@ -8,6 +10,7 @@ albedo_color = Color(0.0705882, 0.137255, 0.027451, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0hofj"]
 
 [node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_queeo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
