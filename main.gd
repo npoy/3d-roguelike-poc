@@ -1,5 +1,8 @@
 extends Node3D
 
+"""
+	TODO: Review Directional Light pixelated shadows
+"""
 var ray_lenght: int = 2000
 
 func _physics_process(delta):
