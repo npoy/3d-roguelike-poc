@@ -1,24 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://ypd2w5ewo5cd"]
+[gd_scene load_steps=6 format=3 uid="uid://ypd2w5ewo5cd"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_b25lt"]
 [ext_resource type="Script" path="res://main.gd" id="1_n2rh3"]
 [ext_resource type="PackedScene" uid="uid://befkpl350d4q1" path="res://enemy.tscn" id="2_xk1of"]
-[ext_resource type="Script" path="res://gun_controller.gd" id="3_0gorf"]
-[ext_resource type="PackedScene" uid="uid://wtm5dukm7v4r" path="res://gun.tscn" id="4_5xw04"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ptjcs"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqqhj"]
-albedo_color = Color(0.792157, 0, 0.105882, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b0100"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlyy5"]
-albedo_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://ce40ckc3nyoch" path="res://player.tscn" id="3_wcndh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_mcqm7"]
-vertices = PackedVector3Array(0, -0.243779, -6, 1.5, -0.243779, -6, 1.75, -0.243779, -7.75, 0, -0.243779, -9, 1.75, -0.243779, -7.75, 5, -0.243779, -7.5, 5, -0.243779, -9, 0, -0.243779, -9, 8, -0.243779, -4.75, 8.25, -0.243779, -3.5, 9, -0.243779, -3.5, 9, -0.243779, -9, 1.75, -0.243779, -5.5, 1.5, -0.243779, -6, 0, -0.243779, -6, 0, -0.243779, -4, 2.25, -0.243779, -4.25, 4.25, -0.243779, -4.75, 4.5, -0.243779, -3.75, 6, -0.243779, -3.75, 6.25, -0.243779, -4.75, 4.75, -0.243779, -5.5, 5, -0.243779, -7.5, 4.75, -0.243779, -5.5, 6.25, -0.243779, -4.75, 4.75, -0.243779, -5.5, 1.75, -0.243779, -5.5, 2.5, -0.243779, -4.75, 4.25, -0.243779, -4.75, 5, -0.243779, -7.5, 6.25, -0.243779, -4.75, 8, -0.243779, -4.75, 9, -0.243779, -9, 5, -0.243779, -9, 1.75, -0.243779, -5.5, 2.25, -0.243779, -4.25, 2.5, -0.243779, -4.75, 9, -0.243779, -3.5, 8.25, -0.243779, -3.5, 8, -0.243779, -2.5, 9, -0.243779, 0, 6.25, -0.243779, -2.5, 6, -0.243779, -3.75, 4.5, -0.243779, -3.75, 4.25, -0.243779, -2.5, 4.25, -0.243779, -2.5, 2.5, -0.243779, -2.5, 0, -0.243779, 0, 9, -0.243779, 0, 8, -0.243779, -2.5, 6.25, -0.243779, -2.5, 2.5, -0.243779, -2.5, 2.25, -0.243779, -4.25, 0, -0.243779, -4, 0, -0.243779, 0, 9, -0.243779, 0, 6.25, -0.243779, -2.5, 4.25, -0.243779, -2.5, 0, -0.243779, 0)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(12, 16, 13), PackedInt32Array(13, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(17, 21, 18), PackedInt32Array(18, 21, 19), PackedInt32Array(19, 21, 20), PackedInt32Array(24, 23, 22), PackedInt32Array(28, 27, 25), PackedInt32Array(25, 27, 26), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 33), PackedInt32Array(31, 33, 32), PackedInt32Array(36, 35, 34), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 44), PackedInt32Array(47, 46, 45), PackedInt32Array(50, 49, 48), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 54), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58)]
+vertices = PackedVector3Array(4.75, -0.24378, -8, 5.25, -0.24378, -7.25, 5.5, -0.24378, -8.75, 8.75, -0.24378, -3.5, 8.5, -0.24378, -3.5, 8, -0.24378, -2.25, 8.75, -0.24378, -0.25, 2, -0.24378, -4.5, 3.5, -0.24378, -5, 3.5, -0.24378, -5.25, 1.75, -0.24378, -5.25, 1.25, -0.24378, -5.75, 0.25, -0.24378, -8.75, 0.25, -0.24378, -0.25, 2, -0.24378, -2.75, 2, -0.24378, -4.5, 1.75, -0.24378, -5.25, 1.25, -0.24378, -5.75, 2, -0.24378, -2.75, 6.25, -0.24378, -2.25, 5.75, -0.24378, -3.75, 4.75, -0.24378, -3.75, 4.25, -0.24378, -2.25, 0.25, -0.24378, -0.25, 4.25, -0.24378, -2.25, 2.5, -0.24378, -2.25, 8.75, -0.24378, -0.25, 6.25, -0.24378, -2.25, 4.25, -0.24378, -2.25, 0.25, -0.24378, -0.25, 1.25, -0.24378, -5.75, 1.25, -0.24378, -7.5, 0.25, -0.24378, -8.75, 8.75, -0.24378, -0.25, 8, -0.24378, -2.25, 6.25, -0.24378, -2.25, 1.75, -0.24378, -8, 4.75, -0.24378, -8, 5.5, -0.24378, -8.75, 0.25, -0.24378, -8.75, 0.25, -0.24378, -0.25, 2.5, -0.24378, -2.25, 2, -0.24378, -2.75, 1.25, -0.24378, -7.5, 1.75, -0.24378, -8, 0.25, -0.24378, -8.75, 3.5, -0.24378, -5.25, 3.5, -0.24378, -5, 4.25, -0.24378, -5, 4.75, -0.24378, -5.25, 5.25, -0.24378, -7.25, 5.25, -0.24378, -5.75, 6.25, -0.24378, -5, 8, -0.24378, -5, 8.75, -0.24378, -8.75, 5.5, -0.24378, -8.75, 4.75, -0.24378, -5.25, 4.25, -0.24378, -5, 4.75, -0.24378, -3.75, 8, -0.24378, -5, 8.5, -0.24378, -3.5, 8.75, -0.24378, -3.5, 8.75, -0.24378, -8.75, 4.75, -0.24378, -5.25, 4.75, -0.24378, -3.75, 5.75, -0.24378, -3.75, 6.25, -0.24378, -5, 5.25, -0.24378, -5.75)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(14, 13, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(25, 24, 23), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(32, 31, 30), PackedInt32Array(35, 34, 33), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(42, 41, 40), PackedInt32Array(43, 45, 44), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(53, 50, 55), PackedInt32Array(53, 55, 54), PackedInt32Array(58, 57, 56), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(67, 66, 63), PackedInt32Array(63, 66, 65), PackedInt32Array(63, 65, 64)]
+agent_radius = 0.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qngqd"]
 albedo_color = Color(0.639216, 0.141176, 0.772549, 1)
@@ -26,32 +15,9 @@ albedo_color = Color(0.639216, 0.141176, 0.772549, 1)
 [node name="Level" type="Node3D"]
 script = ExtResource("1_n2rh3")
 
+[node name="Player" parent="." instance=ExtResource("3_wcndh")]
+
 [node name="Enemy" parent="." instance=ExtResource("2_xk1of")]
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
-
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.896, 0.5, -5.25)
-script = ExtResource("1_b25lt")
-metadata/_edit_group_ = true
-
-[node name="Body" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_ptjcs")
-surface_material_override/0 = SubResource("StandardMaterial3D_oqqhj")
-
-[node name="Eyes" type="MeshInstance3D" parent="Player/Body"]
-transform = Transform3D(0.376923, 0, 0, 0, 0.317702, 0, 0, 0, 0.70389, 0.346172, 0.532283, -0.0252652)
-mesh = SubResource("BoxMesh_b0100")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_hlyy5")
-
-[node name="Hand" type="Marker3D" parent="Player/Body"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3884, 0.237456, 0.458858)
-
-[node name="GunController" type="Node" parent="Player"]
-script = ExtResource("3_0gorf")
-starting_weapon = ExtResource("4_5xw04")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.997682, -0.0309914, 0.0605834, 0.040698, 0.441777, 0.896201, -0.0545389, 0.896589, -0.439492, 4.55409, 5.11564, -13.576)
@@ -71,12 +37,15 @@ size = Vector3(10, 1, 10)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Navigation"]
 transform = Transform3D(0.999551, 0, 0, 0, 1, 0, 0, 0, 1, 3.25835, 0, -3.56273)
+use_collision = true
 material = SubResource("StandardMaterial3D_qngqd")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Navigation"]
 transform = Transform3D(0.999551, 0, 0, 0, 3.98756, 0, 0, 0, 1, 7.08714, 0, -3.56273)
+use_collision = true
 material = SubResource("StandardMaterial3D_qngqd")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Navigation"]
 transform = Transform3D(2.34495, 0, 0, 0, 1, 0, 0, 0, 1, 3.25835, 0, -6.56273)
+use_collision = true
 material = SubResource("StandardMaterial3D_qngqd")
