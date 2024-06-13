@@ -4,12 +4,11 @@ extends CharacterBody3D
 	TODO: Many methods and variables created with no sense
 	but they help to understand the functionality
 """
+
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var player: CharacterBody3D = $"../Player" # TODO: Fix relative path
-
 var movement_speed: float = 2.0
 var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
-
 var path: Array = []
 
 func _ready():

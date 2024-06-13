@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://befkpl350d4q1"]
+[gd_scene load_steps=6 format=3 uid="uid://befkpl350d4q1"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_queeo"]
+[ext_resource type="PackedScene" uid="uid://y2w3hdajksse" path="res://stats.tscn" id="2_qn1b8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fvu3q"]
 
@@ -22,3 +23,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_0hofj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Stats" parent="." instance=ExtResource("2_qn1b8")]

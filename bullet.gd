@@ -1,6 +1,7 @@
 extends Node3D
 
-@export var speed = 30
+@export var speed: int = 30
+@export var damage: int = 1
 @onready var timer: Timer = $Timer
 # Preferred to use a Timer node. This is more for one shot timers 
 #@onready var timer: SceneTreeTimer = get_tree().create_timer(2)
@@ -18,6 +19,13 @@ func _physics_process(delta):
 func _on_timer_timeout():
 	queue_free()
 
-func _on_area_3d_body_entered(body):
-	print_debug("hit: ", body)
+func _on_area_3d_body_entered(body: Node3D):
 	queue_free()
+	
+	"""
+		TODO: Use constants instead of string literals.
+		Also, do we need to check for child nodes?
+	"""
+	if body.has_node("Stats"): 
+		var stats: Stats = body.find_child("Stats") as Stats
+		stats.take_hit(damage)

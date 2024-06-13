@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://y2w3hdajksse"]
+
+[ext_resource type="Script" path="res://stats.gd" id="1_byowd"]
+
+[node name="Stats" type="Node"]
+script = ExtResource("1_byowd")
+
+[connection signal="died" from="." to="." method="_on_died"]
