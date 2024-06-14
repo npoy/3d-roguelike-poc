@@ -34,7 +34,7 @@ func _physics_process(delta):
 
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-
+	
 	"""
 		direction_to is equivalent to using => (b - a).normalized() - Might be not normalized and represent a vector with a real lenght instead of unit
 		Vector subtraction axis z and x
@@ -45,3 +45,6 @@ func _physics_process(delta):
 	"""
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
+
+func _on_stats_died():
+	queue_free()

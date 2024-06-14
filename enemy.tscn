@@ -25,3 +25,5 @@ shape = SubResource("CapsuleShape3D_0hofj")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Stats" parent="." instance=ExtResource("2_qn1b8")]
+
+[connection signal="died" from="Stats" to="." method="_on_stats_died"]

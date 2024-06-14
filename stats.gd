@@ -18,5 +18,6 @@ func take_hit(damage: int):
 	if current_hp <= 0:
 		die()
 
+""" Does not make sense to have die here """
 func die():
 	emit_signal("died")
