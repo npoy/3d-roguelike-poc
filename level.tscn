@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ypd2w5ewo5cd"]
+[gd_scene load_steps=8 format=3 uid="uid://ypd2w5ewo5cd"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_n2rh3"]
 [ext_resource type="PackedScene" uid="uid://befkpl350d4q1" path="res://enemy.tscn" id="2_xk1of"]
 [ext_resource type="PackedScene" uid="uid://ce40ckc3nyoch" path="res://player.tscn" id="3_wcndh"]
 [ext_resource type="Material" uid="uid://bck5r6c8y4ytx" path="res://level_grid.tres" id="4_shh42"]
 [ext_resource type="Script" path="res://spawner.gd" id="5_y63bn"]
+[ext_resource type="Script" path="res://Waves/wave.gd" id="6_o27c5"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_mcqm7"]
 vertices = PackedVector3Array(0.0829582, -0.24378, -4.29107, 1.58296, -0.24378, -4.29107, 1.83296, -0.24378, -5.79107, 0.0829582, -0.24378, -4.29107, 1.83296, -0.24378, -5.79107, 1.58296, -0.24378, -7.79107, -17.667, -0.24378, -3.04107, -17.667, -0.24378, -3.04107, -0.417042, -0.24378, -3.04107, 0.0829582, -0.24378, -4.29107, 2.08296, -0.24378, -8.29107, 3.58296, -0.24378, -8.29107, 3.58296, -0.24378, -35.7911, -17.667, -0.24378, -3.04107, 1.58296, -0.24378, -7.79107, 2.08296, -0.24378, -8.29107, 3.58296, -0.24378, -35.7911, -17.667, -0.24378, -35.7911, 5.33296, -0.24378, -7.79107, 5.33296, -0.24378, -6.29107, 6.58296, -0.24378, -5.04107, 8.08296, -0.24378, -5.04107, 3.58296, -0.24378, -35.7911, 3.58296, -0.24378, -8.29107, 4.83296, -0.24378, -8.29107, 8.08296, -0.24378, -5.04107, 8.58296, -0.24378, -3.79107, 27.833, -0.24378, -3.79107, 5.33296, -0.24378, -7.79107, 8.08296, -0.24378, -5.04107, 27.833, -0.24378, -3.79107, 4.83296, -0.24378, -8.29107, 5.33296, -0.24378, -7.79107, 27.833, -0.24378, -3.79107, 27.833, -0.24378, -35.7911, 3.58296, -0.24378, -35.7911, 5.83296, -0.24378, -4.54107, 6.58296, -0.24378, -5.04107, 5.33296, -0.24378, -6.29107, 4.83296, -0.24378, -5.54107, 5.83296, -0.24378, -2.79107, 2.33296, -0.24378, -2.04107, 1.08296, -0.24378, -1.54107, 1.08296, -0.24378, 26.7089, 7.33296, -0.24378, 26.7089, 7.33296, -0.24378, -2.29107, 1.83296, -0.24378, -5.79107, 1.58296, -0.24378, -4.29107, 2.33296, -0.24378, -3.79107, 4.83296, -0.24378, -5.54107, 5.83296, -0.24378, -2.79107, 5.83296, -0.24378, -4.54107, 4.83296, -0.24378, -5.54107, 2.33296, -0.24378, -3.79107, 2.33296, -0.24378, -2.04107, 27.833, -0.24378, -3.79107, 8.58296, -0.24378, -3.79107, 8.58296, -0.24378, -2.79107, 27.833, -0.24378, -3.79107, 8.58296, -0.24378, -2.79107, 7.33296, -0.24378, -2.29107, 7.33296, -0.24378, 26.7089, 27.833, -0.24378, 26.7089, -0.417042, -0.24378, -2.04107, -0.417042, -0.24378, -3.04107, -17.667, -0.24378, -3.04107, 1.08296, -0.24378, -1.54107, -0.417042, -0.24378, -2.04107, -17.667, -0.24378, -3.04107, -17.667, -0.24378, 26.7089, 1.08296, -0.24378, 26.7089)
@@ -15,17 +16,6 @@ agent_radius = 0.7
 script = ExtResource("1_n2rh3")
 
 [node name="Player" parent="." instance=ExtResource("3_wcndh")]
-
-[node name="Enemy" parent="." instance=ExtResource("2_xk1of")]
-
-[node name="Enemy2" parent="." instance=ExtResource("2_xk1of")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22143, -0.0275645, -11.0572)
-
-[node name="Enemy3" parent="." instance=ExtResource("2_xk1of")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3207, -0.0275645, -11.0572)
-
-[node name="Enemy4" parent="." instance=ExtResource("2_xk1of")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3207, -0.0275645, -2.23067)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.997682, -0.0309914, 0.0605834, 0.040698, 0.441777, 0.896201, -0.0545389, 0.896589, -0.439492, 4.55409, 5.11564, -13.576)
@@ -61,5 +51,23 @@ material = ExtResource("4_shh42")
 
 [node name="Spawner" type="Node3D" parent="."]
 script = ExtResource("5_y63bn")
+enemy = ExtResource("2_xk1of")
 
 [node name="Timer" type="Timer" parent="Spawner"]
+
+[node name="Waves" type="Node" parent="Spawner"]
+
+[node name="Wave" type="Node" parent="Spawner/Waves"]
+script = ExtResource("6_o27c5")
+
+[node name="Wave2" type="Node" parent="Spawner/Waves"]
+script = ExtResource("6_o27c5")
+enemies_qty = 5
+spawn_time = 1
+
+[node name="Wave3" type="Node" parent="Spawner/Waves"]
+script = ExtResource("6_o27c5")
+enemies_qty = 10
+spawn_time = 5
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
