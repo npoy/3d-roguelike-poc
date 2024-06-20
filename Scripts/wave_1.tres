@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://mjby2ur0a86v"]
 
-[ext_resource type="Script" path="res://Waves/wave.gd" id="1_h27ex"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="1_h27ex"]
 
 [resource]
 script = ExtResource("1_h27ex")
-enemies_qty = 10
+enemies_qty = 5
 spawn_time = 1

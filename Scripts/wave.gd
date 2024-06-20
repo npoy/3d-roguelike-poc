@@ -7,4 +7,3 @@ class_name Wave
 """
 @export var enemies_qty: int = 3
 @export var spawn_time: int = 2
-var spawned_enemies: int = 0
