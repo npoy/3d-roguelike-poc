@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_bevss")
-enemies_qty = 1
-spawn_time = 5
+enemies_qty = 5
+spawn_time = 0.2

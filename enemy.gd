@@ -48,3 +48,6 @@ func _physics_process(delta):
 
 func _on_stats_died():
 	queue_free()
+
+func _on_area_3d_body_entered(body):
+	print_debug("test")
