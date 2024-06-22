@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_h27ex")
-enemies_qty = 5
-spawn_time = 0.2
+enemies_qty = 1
+spawn_time = 1.0

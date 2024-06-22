@@ -17,7 +17,7 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5rl4w"]
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.896, 0.5, -5.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.896, 1.5, -5.25)
 collision_layer = 2
 script = ExtResource("1_xxg0c")
 metadata/_edit_group_ = true
