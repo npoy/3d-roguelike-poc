@@ -29,7 +29,7 @@ var current_state: state = state.SEEKING
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
-	# and the navigation layout.
+	# and the navigation layout. 
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
 	attack_timer.wait_time = attack_speed

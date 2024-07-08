@@ -15,10 +15,9 @@ agent_radius = 0.7
 [node name="Level" type="Node3D"]
 script = ExtResource("1_n2rh3")
 
-[node name="Enemy" parent="." instance=ExtResource("2_xk1of")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
 [node name="Player" parent="." instance=ExtResource("3_wcndh")]
+
+[node name="Enemy" parent="." instance=ExtResource("2_xk1of")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.997682, -0.0309914, 0.0605834, 0.040698, 0.441777, 0.896201, -0.0545389, 0.896589, -0.439492, 4.55409, 5.11564, -13.576)
@@ -28,8 +27,9 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 0.866531, 0.499123, 0, -0.499123, 0.866531, 4.32861, 6.97091, 5.27517)
 
 [node name="Navigation" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1.00045, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.00045, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 navigation_mesh = SubResource("NavigationMesh_mcqm7")
+navigation_layers = 5
 
 [node name="Ground" type="CSGBox3D" parent="Navigation"]
 transform = Transform3D(2.35328, 0, 0, 0, 1, 0, 0, 0, 3.20411, 5.116, 0, -4.5)
