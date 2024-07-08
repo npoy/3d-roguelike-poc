@@ -15,6 +15,9 @@ extends CharacterBody3D
 var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
 var path: Array = []
 
+var attack_target: Vector3
+var return_target: Vector3
+
 """
 	TODO: Improve FSM taking it to a next level like in slippy soap
 """
@@ -67,20 +70,30 @@ func _physics_process(delta):
 		state.ATTACKING:
 			move_and_attack()
 		state.RETURNING:
-			pass
+			move_and_attack()
 		state.RESTING:
-			pass	
+			pass
 
 func move_and_attack():
-	velocity = global_position.direction_to(player.global_position) * attack_speed
+	var distance: float = global_position.distance_to(attack_target)
+	velocity = global_position.direction_to(attack_target) * attack_speed
 	move_and_slide()
+	if (distance < 1):
+		match current_state:
+			state.ATTACKING:
+				current_state = state.RETURNING
+				attack_target = return_target
+			state.RETURNING:
+				attack_timer.start()
+				current_state = state.SEEKING
 
 func _on_stats_died():
 	queue_free()
 
 func _on_AttackRadius_body_entered(body):
 	if body == player:
-		attack_timer.start()
+		attack_target = player.global_position
+		return_target = global_position
 		current_state = state.ATTACKING
 
 func _on_attack_timer_timeout():
