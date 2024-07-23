@@ -5,12 +5,17 @@ extends CharacterBody3D
 	but they help to understand the functionality
 """
 
+var default_material: Material = load("res://Enemy/enemy_default_material.tres")
+var attack_material: Material = load("res://Enemy/enemy_attack_material.tres")
+var resting_material: Material = load("res://Enemy/enemy_resting_material.tres")
+
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var player: CharacterBody3D = $"../Player" # TODO: Fix relative path
 @onready var attack_timer: Timer = $AttackTimer
 
 @export var attack_speed: int = 10
 @export var movement_speed: float = 2.0
+@export var time_between_hits: int = 2
 
 var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
 var path: Array = []
@@ -31,11 +36,13 @@ enum state {
 var current_state: state = state.SEEKING
 
 func _ready():
+	$MeshInstance3D.set_surface_override_material(0, default_material)
+	
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout. 
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
-	attack_timer.wait_time = attack_speed
+	attack_timer.wait_time = time_between_hits
 
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -85,7 +92,9 @@ func move_and_attack():
 				attack_target = return_target
 			state.RETURNING:
 				attack_timer.start()
-				current_state = state.SEEKING
+				current_state = state.RESTING
+				$MeshInstance3D.set_surface_override_material(0, resting_material)
+				toggle_enemies_collision(true)
 
 func _on_stats_died():
 	queue_free()
@@ -95,6 +104,13 @@ func _on_AttackRadius_body_entered(body):
 		attack_target = player.global_position
 		return_target = global_position
 		current_state = state.ATTACKING
+		$MeshInstance3D.set_surface_override_material(0, attack_material)
+		toggle_enemies_collision(false)
 
 func _on_attack_timer_timeout():
 	current_state = state.SEEKING
+	$MeshInstance3D.set_surface_override_material(0, default_material)
+
+func toggle_enemies_collision(should_collide: bool):
+	set_collision_mask_value(3, should_collide)
+	set_collision_layer_value(3, should_collide)
