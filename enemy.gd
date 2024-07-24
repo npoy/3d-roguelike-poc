@@ -47,16 +47,21 @@ func _ready():
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
-
 	# Now that the navigation map is no longer empty, set the movement target.
+	print_debug(player)
+	print_debug(player == null)
 	set_movement_target(player.global_transform.origin)
 
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
 func _physics_process(delta):
+	if (player == null):
+		return
+
 	match current_state:
 		state.SEEKING:
+			""" TODO: Set a random path for the enemy if no players """
 			actor_setup()
 			if navigation_agent.is_navigation_finished():
 				return
@@ -79,7 +84,8 @@ func _physics_process(delta):
 		state.RETURNING:
 			move_and_attack()
 		state.RESTING:
-			pass
+			velocity = Vector3.ZERO
+			move_and_slide()
 
 func move_and_attack():
 	var distance: float = global_position.distance_to(attack_target)
@@ -88,6 +94,9 @@ func move_and_attack():
 	if (distance < 1):
 		match current_state:
 			state.ATTACKING:
+				var player_stats: Stats = player.get_node("Stats") as Stats
+				player_stats.take_hit(1)
+				
 				current_state = state.RETURNING
 				attack_target = return_target
 			state.RETURNING:

@@ -4,6 +4,7 @@ extends Node3D
 	TODO: Review Directional Light pixelated shadows
 """
 var ray_lenght: int = 2000
+@onready var player: CharacterBody3D = $Player # TODO: Fix relative path
 
 func _physics_process(delta):
 	var camera = $Camera3D
@@ -16,6 +17,7 @@ func _physics_process(delta):
 	var intersection: Dictionary = space_state.intersect_ray(ray_query)
 	
 	if not intersection.is_empty():
-		var pos = Vector3(intersection.position.x, $Player.position.y, intersection.position.z)
-		$Player.look_at(pos, Vector3.UP)
+		if (player != null):
+			var pos = Vector3(intersection.position.x, player.position.y, intersection.position.z)
+			player.look_at(pos, Vector3.UP)
 	

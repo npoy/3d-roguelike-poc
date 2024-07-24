@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_queeo"]
 [ext_resource type="Material" uid="uid://bl3v5sep8t3ff" path="res://Enemy/enemy_resting_material.tres" id="2_64v41"]
-[ext_resource type="PackedScene" path="res://stats.tscn" id="2_qn1b8"]
+[ext_resource type="PackedScene" uid="uid://cajfcpcn8qr2n" path="res://stats.tscn" id="2_qn1b8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fvu3q"]
 
@@ -31,12 +31,12 @@ path_height_offset = 0.1
 [node name="Stats" parent="." instance=ExtResource("2_qn1b8")]
 
 [node name="AttackRadius" type="Area3D" parent="."]
-transform = Transform3D(1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 0, 0, 0)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 collision_layer = 4
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRadius"]
-transform = Transform3D(1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 0, 1, 0)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1, 0)
 shape = SubResource("CylinderShape3D_p1fex")
 
 [node name="AttackTimer" type="Timer" parent="."]

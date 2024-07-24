@@ -37,3 +37,6 @@ func _process(delta):
 			This needs to be refactored to use the corresponding pattern
 		"""
 		gun_controller.shoot()
+
+func _on_stats_died():
+	queue_free()
