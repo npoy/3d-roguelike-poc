@@ -48,15 +48,14 @@ func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
 	# Now that the navigation map is no longer empty, set the movement target.
-	print_debug(player)
-	print_debug(player == null)
-	set_movement_target(player.global_transform.origin)
+	if is_instance_valid(player):
+		set_movement_target(player.global_transform.origin)
 
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
 func _physics_process(delta):
-	if (player == null):
+	if not is_instance_valid(player):
 		return
 
 	match current_state:
@@ -115,6 +114,13 @@ func _on_AttackRadius_body_entered(body):
 		current_state = state.ATTACKING
 		$MeshInstance3D.set_surface_override_material(0, attack_material)
 		toggle_enemies_collision(false)
+
+"""
+	TODO: Validate since 2nd attack does not work if player does not go out of the zone before
+	is this signal useful?
+"""
+func _on_attack_radius_body_exited(body):
+	pass # Replace with function body.
 
 func _on_attack_timer_timeout():
 	current_state = state.SEEKING

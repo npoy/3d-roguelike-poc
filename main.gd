@@ -16,8 +16,7 @@ func _physics_process(delta):
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var intersection: Dictionary = space_state.intersect_ray(ray_query)
 	
-	if not intersection.is_empty():
-		if (player != null):
-			var pos = Vector3(intersection.position.x, player.position.y, intersection.position.z)
-			player.look_at(pos, Vector3.UP)
+	if is_instance_valid(player) and not intersection.is_empty():
+		var pos = Vector3(intersection.position.x, player.position.y, intersection.position.z)
+		player.look_at(pos, Vector3.UP)
 	
