@@ -78,6 +78,9 @@ func _physics_process(delta):
 			"""
 			velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 			move_and_slide()
+			# Same as a on body entered signal. Alternative to validate entering and leaving the zone
+			if $AttackRadius.overlaps_body(player):
+				attack()
 		state.ATTACKING:
 			move_and_attack()
 		state.RETURNING:
@@ -107,20 +110,19 @@ func move_and_attack():
 func _on_stats_died():
 	queue_free()
 
-func _on_AttackRadius_body_entered(body):
-	if body == player:
-		attack_target = player.global_position
-		return_target = global_position
-		current_state = state.ATTACKING
-		$MeshInstance3D.set_surface_override_material(0, attack_material)
-		toggle_enemies_collision(false)
+#func _on_AttackRadius_body_entered(body):
+func attack():
+	#if body == player:
+	attack_target = player.global_position
+	return_target = global_position
+	current_state = state.ATTACKING
+	$MeshInstance3D.set_surface_override_material(0, attack_material)
+	toggle_enemies_collision(false)
 
 """
 	TODO: Validate since 2nd attack does not work if player does not go out of the zone before
 	is this signal useful?
 """
-func _on_attack_radius_body_exited(body):
-	pass # Replace with function body.
 
 func _on_attack_timer_timeout():
 	current_state = state.SEEKING

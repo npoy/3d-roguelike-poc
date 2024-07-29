@@ -20,6 +20,11 @@ func _on_timer_timeout():
 	queue_free()
 
 func _on_area_3d_body_entered(body: Node3D):
+	"""
+		TODO: Update bullet to be a PhysicsBody3D and apply collision (move by motion)
+		instead of Area3D that just translate on axis
+	"""
+	print_debug("test")
 	queue_free()
 	
 	"""

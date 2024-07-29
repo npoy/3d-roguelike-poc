@@ -44,6 +44,4 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="died" from="Stats" to="." method="_on_stats_died"]
-[connection signal="body_entered" from="AttackRadius" to="." method="_on_AttackRadius_body_entered"]
-[connection signal="body_exited" from="AttackRadius" to="." method="_on_attack_radius_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
