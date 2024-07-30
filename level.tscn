@@ -29,23 +29,23 @@ transform = Transform3D(1.00045, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 navigation_mesh = SubResource("NavigationMesh_mcqm7")
 navigation_layers = 5
 
-[node name="Ground" type="CSGBox3D" parent="Navigation"]
+[node name="Ground" type="CSGBox3D" parent="Navigation" groups=["World"]]
 transform = Transform3D(2.35328, 0, 0, 0, 1, 0, 0, 0, 3.20411, 5.116, 0, -4.5)
 use_collision = true
 size = Vector3(20, 1, 20)
 material = ExtResource("4_shh42")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Navigation"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Navigation" groups=["World"]]
 transform = Transform3D(1, 0, 0, 0, 4.02429, 0, 0, 0, 1, 0.989, 1, -3.009)
 use_collision = true
 material = ExtResource("4_shh42")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Navigation"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Navigation" groups=["World"]]
 transform = Transform3D(0.999551, 0, 0, 0, 3.98756, 0, 0, 0, 1, 7.087, 1, -3.563)
 use_collision = true
 material = ExtResource("4_shh42")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Navigation"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Navigation" groups=["World"]]
 transform = Transform3D(1.99432, 0, 0, 0, 3.99034, 0, 0, 0, 0.977209, 3.493, 1, -6.997)
 use_collision = true
 material = ExtResource("4_shh42")

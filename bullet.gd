@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 
 @export var speed: int = 30
 @export var damage: int = 1
@@ -14,23 +14,16 @@ func _physics_process(delta):
 		With speed (70) being the magnitude of the velocity vector(70/1 - vector quantity)
 	"""
 	# Using translate() is the same since the origin is the parent anyway
-	global_translate(forward_direction * speed * delta)
+	#global_translate(forward_direction * speed * delta)
+	var collision: KinematicCollision3D = move_and_collide(forward_direction * speed * delta)
+	if collision:
+		var body = collision.get_collider()
+		if body.has_node("Stats"):
+			queue_free()
+			var stats: Stats = body.find_child("Stats") as Stats
+			stats.take_hit(damage)
+		if body.is_in_group("World"):
+			queue_free()
 	
 func _on_timer_timeout():
 	queue_free()
-
-func _on_area_3d_body_entered(body: Node3D):
-	"""
-		TODO: Update bullet to be a PhysicsBody3D and apply collision (move by motion)
-		instead of Area3D that just translate on axis
-	"""
-	print_debug("test")
-	queue_free()
-	
-	"""
-		TODO: Use constants instead of string literals.
-		Also, do we need to check for child nodes?
-	"""
-	if body.has_node("Stats"): 
-		var stats: Stats = body.find_child("Stats") as Stats
-		stats.take_hit(damage)
