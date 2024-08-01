@@ -5,6 +5,7 @@ extends Node3D
 """
 var ray_lenght: int = 2000
 @onready var player: CharacterBody3D = $Player # TODO: Fix relative path
+@onready var player_hand: Marker3D = $Player/Body/Hand
 
 func _physics_process(delta):
 	var camera = $Camera3D
@@ -18,5 +19,7 @@ func _physics_process(delta):
 	
 	if is_instance_valid(player) and not intersection.is_empty():
 		var pos = Vector3(intersection.position.x, player.position.y, intersection.position.z)
+		var pos_hand = Vector3(intersection.position.x, player.position.y, intersection.position.z)
 		player.look_at(pos, Vector3.UP)
+		player_hand.look_at(pos_hand, Vector3.UP) # TODO: Fix targeting the floor if close to the character
 	

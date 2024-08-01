@@ -16,6 +16,7 @@ func _physics_process(delta):
 	# Using translate() is the same since the origin is the parent anyway
 	#global_translate(forward_direction * speed * delta)
 	var collision: KinematicCollision3D = move_and_collide(forward_direction * speed * delta)
+	""" TODO: Fix shooting/collision when gun is inside the blocks or enemies """
 	if collision:
 		var body = collision.get_collider()
 		if body.has_node("Stats"):

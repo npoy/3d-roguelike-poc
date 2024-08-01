@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player.gd" id="1_xxg0c"]
 [ext_resource type="PackedScene" uid="uid://cajfcpcn8qr2n" path="res://stats.tscn" id="2_2ghpb"]
 [ext_resource type="Script" path="res://gun_controller.gd" id="2_f2wwc"]
-[ext_resource type="PackedScene" path="res://gun.tscn" id="3_sn3tn"]
+[ext_resource type="PackedScene" uid="uid://bo7qdwqkbnarf" path="res://gun.tscn" id="3_sn3tn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ptjcs"]
 
@@ -37,7 +37,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_hlyy5")
 
 [node name="Hand" type="Marker3D" parent="Body"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3884, 0.237456, 0.458858)
+transform = Transform3D(1.37087e-07, 0, -1, 0, 1, 0, 1, 0, 1.37087e-07, 0.3884, 0.237456, 0.458858)
 
 [node name="GunController" type="Node" parent="."]
 script = ExtResource("2_f2wwc")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://wtm5dukm7v4r"]
+[gd_scene load_steps=5 format=3 uid="uid://bo7qdwqkbnarf"]
 
 [ext_resource type="Script" path="res://gun.gd" id="1_6ixld"]
-[ext_resource type="PackedScene" uid="uid://bjpb6s47dklh4" path="res://bullet.tscn" id="2_w2hod"]
+[ext_resource type="PackedScene" uid="uid://2ud1jyv5krp1" path="res://bullet.tscn" id="2_w2hod"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xif6g"]
 
@@ -9,7 +9,7 @@
 albedo_color = Color(0.0901961, 0.054902, 0.027451, 1)
 
 [node name="Gun" type="Node3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.656297)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 1.71758e-07, 0, -0.653488)
 script = ExtResource("1_6ixld")
 bullet = ExtResource("2_w2hod")
 

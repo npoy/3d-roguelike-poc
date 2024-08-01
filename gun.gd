@@ -1,5 +1,6 @@
 extends Node3D
 
+""" TODO: Check axis position on 3d model. X and Z are mixed probably, not like the rest of the objects """
 @export var bullet: PackedScene
 @export var muzzle_speed: int = 30
 @export var time_between_shots: int = 50 # In milliseconds
