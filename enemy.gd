@@ -123,7 +123,6 @@ func attack():
 	TODO: Validate since 2nd attack does not work if player does not go out of the zone before
 	is this signal useful?
 """
-
 func _on_attack_timer_timeout():
 	current_state = state.SEEKING
 	$MeshInstance3D.set_surface_override_material(0, default_material)

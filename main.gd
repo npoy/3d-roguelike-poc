@@ -18,8 +18,23 @@ func _physics_process(delta):
 	var intersection: Dictionary = space_state.intersect_ray(ray_query)
 	
 	if is_instance_valid(player) and not intersection.is_empty():
-		var pos = Vector3(intersection.position.x, player.position.y, intersection.position.z)
-		var pos_hand = Vector3(intersection.position.x, player.position.y, intersection.position.z)
-		player.look_at(pos, Vector3.UP)
-		player_hand.look_at(pos_hand, Vector3.UP) # TODO: Fix targeting the floor if close to the character
+		var pointer_pos = Vector3(intersection.position.x, player.position.y, intersection.position.z)
+		var hand_pos = Vector3(intersection.position.x, player_hand.global_position.y, intersection.position.z)
+		player.look_at(pointer_pos)
+		"""
+			Validate Vector and Matrix rotations. 3D rotation, rotation axis, Why does it need Vector3.UP?
+			- Orthogonal transformations: https://chatgpt.com/c/f659ca38-9a12-415b-b811-2b43e19af1a8
+		"""
+		var distance_to_pointer: Vector3 = player_hand.global_position - pointer_pos
+		
+		# TODO: * Not use arbitrary values, check for mesh sizes?
+		#var gun = $Player/GunController.equipped_weapon
+		#print_debug(gun)
+		#var mesh = gun.get_node("MeshInstance3D")
+		#var mesh2 = mesh.get_mesh()
+		#print_debug(mesh2)
+		#print_debug(mesh2.get_aabb())
+		
+		if distance_to_pointer.length() > 3: # *
+			player_hand.look_at(hand_pos)
 	
