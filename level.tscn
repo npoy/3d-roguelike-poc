@@ -32,6 +32,7 @@ navigation_layers = 5
 [node name="Ground" type="CSGBox3D" parent="Navigation" groups=["World"]]
 transform = Transform3D(2.35328, 0, 0, 0, 1, 0, 0, 0, 3.20411, 5.116, 0, -4.5)
 use_collision = true
+collision_layer = 9
 size = Vector3(20, 1, 20)
 material = ExtResource("4_shh42")
 

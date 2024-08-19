@@ -13,7 +13,7 @@ func _physics_process(delta):
 	var ray_origin: Vector3 = $Camera3D.project_ray_origin(mouse_position)
 	var ray_target: Vector3 = ray_origin + $Camera3D.project_ray_normal(mouse_position) * ray_lenght
 	
-	var ray_query = PhysicsRayQueryParameters3D.create(ray_origin, ray_target)
+	var ray_query = PhysicsRayQueryParameters3D.create(ray_origin, ray_target, 8) #TODO: Use constants for layers
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var intersection: Dictionary = space_state.intersect_ray(ray_query)
 	
