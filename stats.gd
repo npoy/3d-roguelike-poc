@@ -7,11 +7,7 @@ class_name Stats
 signal died
 
 @export var max_hp: int = 10
-var current_hp = max_hp
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var current_hp = max_hp
 
 func take_hit(damage: int):
 	current_hp -= damage
