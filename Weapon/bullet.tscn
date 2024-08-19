@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2ud1jyv5krp1"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_na1pa"]
+[ext_resource type="Script" path="res://Weapon/bullet.gd" id="1_na1pa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ipmw6"]
 

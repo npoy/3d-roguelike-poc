@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://ccswwastnge2k"]
 
-[ext_resource type="Script" path="res://Scripts/wave.gd" id="1_bevss"]
+[ext_resource type="Script" path="res://Spawning/wave.gd" id="1_bevss"]
 
 [resource]
 script = ExtResource("1_bevss")

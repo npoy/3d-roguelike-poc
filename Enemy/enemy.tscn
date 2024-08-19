@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://befkpl350d4q1"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_queeo"]
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_queeo"]
 [ext_resource type="Material" uid="uid://bl3v5sep8t3ff" path="res://Enemy/enemy_resting_material.tres" id="2_64v41"]
 [ext_resource type="PackedScene" uid="uid://cajfcpcn8qr2n" path="res://stats.tscn" id="2_qn1b8"]
 

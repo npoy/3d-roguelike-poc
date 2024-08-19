@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bo7qdwqkbnarf"]
 
-[ext_resource type="Script" path="res://gun.gd" id="1_6ixld"]
-[ext_resource type="PackedScene" uid="uid://2ud1jyv5krp1" path="res://bullet.tscn" id="2_w2hod"]
+[ext_resource type="Script" path="res://Weapon/gun.gd" id="1_6ixld"]
+[ext_resource type="PackedScene" uid="uid://2ud1jyv5krp1" path="res://Weapon/bullet.tscn" id="2_w2hod"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xif6g"]
 
