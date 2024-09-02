@@ -9,8 +9,8 @@ var spawned_enemies: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#start_wave()
-	pass
+	start_wave()
+	#pass
 	
 func start_wave() -> void:
 	spawned_enemies = 0

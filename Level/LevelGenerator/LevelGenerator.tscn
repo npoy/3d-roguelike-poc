@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0ma2umuwuv8a"]
+
+[ext_resource type="Script" path="res://Level/LevelGenerator/LevelGenerator.gd" id="1_uk1ai"]
+[ext_resource type="PackedScene" uid="uid://drc53pqaurqxq" path="res://Level/LevelGenerator/ground.tscn" id="2_6pxsw"]
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_uk1ai")
+GroundScene = ExtResource("2_6pxsw")
