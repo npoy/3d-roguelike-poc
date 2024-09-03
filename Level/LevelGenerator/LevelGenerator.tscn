@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0ma2umuwuv8a"]
+[gd_scene load_steps=4 format=3 uid="uid://d0ma2umuwuv8a"]
 
 [ext_resource type="Script" path="res://Level/LevelGenerator/LevelGenerator.gd" id="1_uk1ai"]
 [ext_resource type="PackedScene" uid="uid://drc53pqaurqxq" path="res://Level/LevelGenerator/ground.tscn" id="2_6pxsw"]
+[ext_resource type="PackedScene" uid="uid://ccq2edoytk6re" path="res://Level/LevelGenerator/Obstacle.tscn" id="3_bq0al"]
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_uk1ai")
 GroundScene = ExtResource("2_6pxsw")
+ObstacleScene = ExtResource("3_bq0al")
+map_width = 9
+map_depth = 9
+obstacle_ratio = 0.4
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.739468, 0.302579, -0.60136, 0.00859971, 0.888977, 0.457871, 0.673137, -0.343752, 0.654768, 0, 3.31132, 0)
