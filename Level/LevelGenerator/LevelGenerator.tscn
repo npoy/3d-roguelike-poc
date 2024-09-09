@@ -8,9 +8,12 @@
 script = ExtResource("1_uk1ai")
 GroundScene = ExtResource("2_6pxsw")
 ObstacleScene = ExtResource("3_bq0al")
-map_width = 9
-map_depth = 9
-obstacle_ratio = 0.4
+map_width = 19
+map_depth = 15
+obstacle_density = 0.1
+obstacle_max_height = 1.686
+obstacle_min_height = 1.686
+rng_seed = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.739468, 0.302579, -0.60136, 0.00859971, 0.888977, 0.457871, 0.673137, -0.343752, 0.654768, 0, 3.31132, 0)
