@@ -10,9 +10,10 @@ GroundScene = ExtResource("2_6pxsw")
 ObstacleScene = ExtResource("3_bq0al")
 map_width = 19
 map_depth = 15
-obstacle_density = 0.05
-obstacle_min_height = 1.419
+obstacle_density = 0.45
 rng_seed = 1
+foreground_color = Color(0.32549, 0.584314, 0.901961, 1)
+background_color = Color(0.631373, 0.87451, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.739468, 0.302579, -0.60136, 0.00859971, 0.888977, 0.457871, 0.673137, -0.343752, 0.654768, 0, 3.31132, 0)

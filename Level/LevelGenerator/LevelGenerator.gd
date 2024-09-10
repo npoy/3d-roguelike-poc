@@ -40,6 +40,13 @@ extends Node3D
 		rng_seed = value
 		generate_map()
 
+@export var foreground_color: Color
+@export var background_color: Color:
+	get: return background_color
+	set(value):
+		background_color = value
+		generate_map()
+
 var map_coords: Array = []
 
 class Coord:
@@ -87,16 +94,23 @@ func add_obstacles():
 	var obstacle_qty: int = map_coords.size() * obstacle_density
 	if (obstacle_qty > 0):
 		for coord in map_coords.slice(0, obstacle_qty):
-			add_obstacle_at(coord)
+			create_obstacle_at(coord)
 	
-func add_obstacle_at(coord: Coord):
+func create_obstacle_at(coord: Coord):
 	var obstacle_position: Vector3 = Vector3(coord.x, 0, coord.z)
 	obstacle_position -= Vector3(map_width/2, 0, map_depth/2)
 	var obstacle: CSGBox3D = ObstacleScene.instantiate()
+	
+	var material := StandardMaterial3D.new()
+	material.albedo_color = get_color_at_depth(coord.z)
+	
+	obstacle.material = material
 	obstacle.height = get_obstacle_height()
-	print(obstacle.get_size().y)
 	obstacle.global_transform.origin = obstacle_position + Vector3(0, obstacle.get_size().y/2, 0)
 	add_child(obstacle)
 
 func get_obstacle_height():
 	return randf_range(obstacle_min_height, obstacle_max_height)
+
+func get_color_at_depth(z: int):
+	return background_color.lerp(foreground_color, float(z)/map_depth)
