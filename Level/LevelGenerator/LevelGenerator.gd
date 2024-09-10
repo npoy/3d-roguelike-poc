@@ -90,9 +90,13 @@ func add_obstacles():
 			add_obstacle_at(coord)
 	
 func add_obstacle_at(coord: Coord):
-	var obstacle_position: Vector3 = Vector3(coord.x, 1, coord.z)
+	var obstacle_position: Vector3 = Vector3(coord.x, 0, coord.z)
 	obstacle_position -= Vector3(map_width/2, 0, map_depth/2)
 	var obstacle: CSGBox3D = ObstacleScene.instantiate()
-	obstacle.global_transform.origin = obstacle_position
+	obstacle.height = get_obstacle_height()
+	print(obstacle.get_size().y)
+	obstacle.global_transform.origin = obstacle_position + Vector3(0, obstacle.get_size().y/2, 0)
 	add_child(obstacle)
 
+func get_obstacle_height():
+	return randf_range(obstacle_min_height, obstacle_max_height)

@@ -10,9 +10,8 @@ GroundScene = ExtResource("2_6pxsw")
 ObstacleScene = ExtResource("3_bq0al")
 map_width = 19
 map_depth = 15
-obstacle_density = 0.1
-obstacle_max_height = 1.686
-obstacle_min_height = 1.686
+obstacle_density = 0.05
+obstacle_min_height = 1.419
 rng_seed = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]

@@ -3,6 +3,5 @@
 [ext_resource type="Material" uid="uid://bck5r6c8y4ytx" path="res://Level/level_grid.tres" id="1_ybf4s"]
 
 [node name="CSGBox3D2" type="CSGBox3D" groups=["World"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00345, 1.07087, -2.991)
 use_collision = true
 material = ExtResource("1_ybf4s")
