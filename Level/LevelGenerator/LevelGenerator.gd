@@ -76,18 +76,18 @@ func generate_map() -> void:
 	add_map()
 	add_obstacles()
 
-func clear_map():
+func clear_map() -> void:
 	for node in get_children():
 		if node is CSGBox3D:
 			node.queue_free()
 			
-func add_map():
+func add_map() -> void:
 	var ground: CSGBox3D = GroundScene.instantiate()
 	ground.size = Vector3(map_width, 1, map_depth)
 	ground.global_transform.origin = Vector3(0, 0, 0)
 	add_child(ground)
 
-func add_obstacles():
+func add_obstacles() -> void:
 	fill_map_coords()
 	seed(rng_seed)
 	map_coords.shuffle()
@@ -96,8 +96,8 @@ func add_obstacles():
 		for coord in map_coords.slice(0, obstacle_qty):
 			create_obstacle_at(coord)
 	
-func create_obstacle_at(coord: Coord):
-	var obstacle_position: Vector3 = Vector3(coord.x, 0, coord.z)
+func create_obstacle_at(coord: Coord) -> void:
+	var obstacle_position: Vector3 = Vector3(coord.x, 0.5, coord.z) # TODO: Pick y value from ground or obstacle
 	obstacle_position -= Vector3(map_width/2, 0, map_depth/2)
 	var obstacle: CSGBox3D = ObstacleScene.instantiate()
 	
@@ -109,7 +109,7 @@ func create_obstacle_at(coord: Coord):
 	obstacle.global_transform.origin = obstacle_position + Vector3(0, obstacle.get_size().y/2, 0)
 	add_child(obstacle)
 
-func get_obstacle_height():
+func get_obstacle_height() -> float:
 	return randf_range(obstacle_min_height, obstacle_max_height)
 
 func get_color_at_depth(z: int):
