@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://caso0e1mtk77o"]
+
+[ext_resource type="Shader" uid="uid://dgmso81cwkmce" path="res://Level/LevelGenerator/LevelGenerator.tres" id="1_ftmhc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ftmhc")
+shader_parameter/BackgroundColor = Color(0, 0, 1, 1)
+shader_parameter/ForegroundColor = Color(1, 0, 0, 1)
