@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwo0gopd5maf5"]
 
-[ext_resource type="Material" uid="uid://caso0e1mtk77o" path="res://Level/FGShaderMaterial.tres" id="1_bbwif"]
+[ext_resource type="Material" uid="uid://caso0e1mtk77o" path="res://Level/LevelGenerator/FGShaderMaterial.tres" id="1_bbwif"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xgleb"]
 

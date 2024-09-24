@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccq2edoytk6re"]
 
-[ext_resource type="Material" uid="uid://bck5r6c8y4ytx" path="res://Level/level_grid.tres" id="1_ybf4s"]
+[ext_resource type="Material" uid="uid://caso0e1mtk77o" path="res://Level/LevelGenerator/FGShaderMaterial.tres" id="1_g5308"]
 
 [node name="CSGBox3D2" type="CSGBox3D" groups=["World"]]
 use_collision = true
-material = ExtResource("1_ybf4s")
+material = ExtResource("1_g5308")

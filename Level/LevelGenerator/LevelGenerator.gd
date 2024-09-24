@@ -4,6 +4,8 @@ extends Node3D
 @export var GroundScene: PackedScene
 @export var ObstacleScene: PackedScene
 
+var shader_material: ShaderMaterial
+
 @export_range(1, 21) var map_width: int = 11:
 	get: return map_width
 	set(value):
@@ -74,6 +76,7 @@ func fill_map_coords() -> void:
 func generate_map() -> void:
 	clear_map()
 	add_map()
+	update_obstacle_material()
 	add_obstacles()
 
 func clear_map() -> void:
@@ -86,6 +89,13 @@ func add_map() -> void:
 	ground.size = Vector3(map_width, 1, map_depth)
 	ground.global_transform.origin = Vector3(0, 0, 0)
 	add_child(ground)
+
+func update_obstacle_material() -> void:
+	var temp_obstacle: CSGBox3D = ObstacleScene.instantiate()
+	shader_material = temp_obstacle.material as ShaderMaterial
+	shader_material.set_shader_parameter("ForegroundColor", foreground_color)
+	shader_material.set_shader_parameter("BackgroundColor", background_color)
+	shader_material.set_shader_parameter("LevelDepth", map_depth)
 
 func add_obstacles() -> void:
 	fill_map_coords()
@@ -101,10 +111,10 @@ func create_obstacle_at(coord: Coord) -> void:
 	obstacle_position -= Vector3(map_width/2, 0, map_depth/2)
 	var obstacle: CSGBox3D = ObstacleScene.instantiate()
 	
-	var material := StandardMaterial3D.new()
-	material.albedo_color = get_color_at_depth(coord.z)
+	#var material := StandardMaterial3D.new()
+	#material.albedo_color = get_color_at_depth(coord.z)
+	#obstacle.material = material
 	
-	obstacle.material = material
 	obstacle.height = get_obstacle_height()
 	obstacle.global_transform.origin = obstacle_position + Vector3(0, obstacle.get_size().y/2, 0)
 	add_child(obstacle)

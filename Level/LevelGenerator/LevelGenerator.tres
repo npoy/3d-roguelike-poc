@@ -1,4 +1,15 @@
-[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://dgmso81cwkmce"]
+[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://dgmso81cwkmce"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_rpq44"]
+default_input_values = [0, 0.0, 1, 15.0]
+operator = 3
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_anjo0"]
+default_input_values = [0, 0.0, 1, 0.5]
+
+[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_our2o"]
+parameter_name = "LevelDepth"
+default_value = 15
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_otubx"]
 input_name = "color"
@@ -24,12 +35,16 @@ input_name = "vertex"
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_3sgvh"]
 input_name = "model_matrix"
 
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_mxtfk"]
+operator = 1
+
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform vec4 BackgroundColor : source_color;
 uniform vec4 ForegroundColor : source_color;
+uniform int LevelDepth;
 
 
 
@@ -46,8 +61,12 @@ void vertex() {
 	vec3 n_out4p0 = (n_out5p0 * vec4(n_out2p0, 1.0)).xyz;
 
 
+// VectorOp:6
+	vec3 n_out6p0 = n_out4p0 - n_out2p0;
+
+
 // Output:0
-	COLOR.rgb = n_out4p0;
+	COLOR.rgb = n_out6p0;
 
 
 }
@@ -71,8 +90,21 @@ void fragment() {
 	float n_out5p2 = vec3(n_out3p0.xyz).z;
 
 
+// IntParameter:12
+	int n_out12p0 = LevelDepth;
+
+
+// FloatOp:10
+	float n_out10p0 = n_out5p2 / float(n_out12p0);
+
+
+// FloatOp:11
+	float n_in11p1 = 0.50000;
+	float n_out11p0 = n_out10p0 + n_in11p1;
+
+
 // Mix:9
-	vec3 n_out9p0 = mix(vec3(n_out7p0.xyz), vec3(n_out6p0.xyz), n_out5p2);
+	vec3 n_out9p0 = mix(vec3(n_out7p0.xyz), vec3(n_out6p0.xyz), n_out11p0);
 
 
 // Output:0
@@ -81,24 +113,32 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(147.293, 27.5645)
-nodes/vertex/0/position = Vector2(1240, 140)
+graph_offset = Vector2(1.25983, 367.178)
+nodes/vertex/0/position = Vector2(1620, 120)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_onuiw")
 nodes/vertex/2/position = Vector2(340, 260)
 nodes/vertex/4/node = SubResource("VisualShaderNodeTransformVecMult_c4j0r")
-nodes/vertex/4/position = Vector2(820, 200)
+nodes/vertex/4/position = Vector2(880, 160)
 nodes/vertex/5/node = SubResource("VisualShaderNodeInput_3sgvh")
 nodes/vertex/5/position = Vector2(340, 140)
-nodes/vertex/connections = PackedInt32Array(2, 0, 4, 1, 4, 0, 0, 6, 5, 0, 4, 0)
+nodes/vertex/6/node = SubResource("VisualShaderNodeVectorOp_mxtfk")
+nodes/vertex/6/position = Vector2(1220, 220)
+nodes/vertex/connections = PackedInt32Array(2, 0, 4, 1, 5, 0, 4, 0, 2, 0, 6, 1, 4, 0, 6, 0, 6, 0, 0, 6)
 nodes/fragment/0/position = Vector2(1520, 100)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_otubx")
-nodes/fragment/3/position = Vector2(380, 160)
+nodes/fragment/3/position = Vector2(400, 60)
 nodes/fragment/5/node = SubResource("VisualShaderNodeVectorDecompose_sjb27")
-nodes/fragment/5/position = Vector2(460, 440)
+nodes/fragment/5/position = Vector2(420, 500)
 nodes/fragment/6/node = SubResource("VisualShaderNodeColorParameter_j6yam")
-nodes/fragment/6/position = Vector2(720, 140)
+nodes/fragment/6/position = Vector2(740, 60)
 nodes/fragment/7/node = SubResource("VisualShaderNodeColorParameter_gm1kq")
-nodes/fragment/7/position = Vector2(720, 300)
+nodes/fragment/7/position = Vector2(740, 220)
 nodes/fragment/9/node = SubResource("VisualShaderNodeMix_fuhdr")
-nodes/fragment/9/position = Vector2(1240, 320)
-nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 9, 0, 0, 0, 5, 2, 9, 2, 6, 0, 9, 1, 7, 0, 9, 0)
+nodes/fragment/9/position = Vector2(1220, 400)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_rpq44")
+nodes/fragment/10/position = Vector2(740, 520)
+nodes/fragment/11/node = SubResource("VisualShaderNodeFloatOp_anjo0")
+nodes/fragment/11/position = Vector2(960, 520)
+nodes/fragment/12/node = SubResource("VisualShaderNodeIntParameter_our2o")
+nodes/fragment/12/position = Vector2(420, 700)
+nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 9, 0, 0, 0, 6, 0, 9, 1, 7, 0, 9, 0, 5, 2, 10, 0, 10, 0, 11, 0, 11, 0, 9, 2, 12, 0, 10, 1)
