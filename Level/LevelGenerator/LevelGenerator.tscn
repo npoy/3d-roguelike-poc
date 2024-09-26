@@ -9,12 +9,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101261, 0.0411444, -0.0409
 script = ExtResource("1_uk1ai")
 GroundScene = ExtResource("2_6pxsw")
 ObstacleScene = ExtResource("3_bq0al")
-map_width = 19
-map_depth = 15
-obstacle_density = 0.45
+map_width = 5
+map_depth = 3
+obstacle_density = 0.3
 obstacle_max_height = 2.299
 obstacle_min_height = 1.076
-rng_seed = 1
+rng_seed = 11
 foreground_color = Color(0, 1, 0, 1)
 background_color = Color(1, 0.815686, 0, 1)
 
