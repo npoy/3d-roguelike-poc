@@ -123,56 +123,53 @@ func add_obstacles() -> void:
 	seed(rng_seed)
 	map_coords.shuffle()
 	
-	var obstacle_qty: int = map_coords.size() * obstacle_density
-	var current_obstacle_qty: int = 0
+	var obstacles_qty: int = map_coords.size() * obstacle_density
+	var current_obstacle_qty = 0
 	
-	if (obstacle_qty > 0):
-		for coord in map_coords.slice(0, obstacle_qty):
-			create_obstacle_at(coord)
+	if obstacles_qty > 0:
+		for coord in map_coords.slice(0, obstacles_qty - 1):
 			if not map_center.is_equal(coord):
 				current_obstacle_qty += 1
-				obstacle_map[coord.x][coord.z] = true # TODO: Check if shouldn't be this flood fill logic all in one specific method?
-				if is_map_fully_accesible(current_obstacle_qty):
+				obstacle_map[coord.x][coord.z] = true
+				if is_map_fully_accessible(current_obstacle_qty):
 					create_obstacle_at(coord)
 				else:
 					current_obstacle_qty -= 1
 					obstacle_map[coord.x][coord.z] = false
 
-func is_map_fully_accesible(current_obstacle_qty: int):
+func is_map_fully_accessible(current_obstacle_qty):
+	#Flood fill
 	var checked_coords = []
 	for x in range(map_width):
 		checked_coords.append([])
 		for z in range(map_depth):
 			checked_coords[x].append(false)
+	
 	var coords_to_check = [map_center]
 	checked_coords[map_center.x][map_center.z] = true
 	var accessible_coord_count = 1
-	
-	#print(str("map_center: ", map_center))
 	
 	while coords_to_check:
 		var current_coord: Coord = coords_to_check.pop_front()
 		for x in [-1, 0, 1]:
 			for z in [-1, 0, 1]:
-				if x == 0 or z == 0: # non-diagonal neighbord
-					#print(str("current_coord", current_coord))
+				if x == 0 or z == 0:  # non-diagonal neighbor
 					var neighbor = Coord.new(current_coord.x + x, current_coord.z + z)
-					if is_coord_on_the_map(neighbor):
+					if is_on_the_map(neighbor):
 						if not checked_coords[neighbor.x][neighbor.z]:
 							if not obstacle_map[neighbor.x][neighbor.z]:
 								checked_coords[neighbor.x][neighbor.z] = true
-								#print("append neighbor?")
 								coords_to_check.append(neighbor)
 								accessible_coord_count += 1
+
 	var target_accessible_coord_count = map_width * map_depth - current_obstacle_qty
 	if target_accessible_coord_count == accessible_coord_count:
 		return true
 	else:
-		#print(str("Not drawing =>", "target_accessible_coord_count: ", target_accessible_coord_count, " accessible_coord_count: ", accessible_coord_count))
 		return false
 						
-func is_coord_on_the_map(coord: Coord):
-	return coord.x >- 0 and coord.x < map_width and coord.z >- 0 and coord.z < map_depth
+func is_on_the_map(coord: Coord):
+	return coord.x >= 0 and coord.x < map_width and coord.z >= 0 and coord.z < map_depth
 					
 func create_obstacle_at(coord: Coord) -> void:
 	var obstacle_position: Vector3 = Vector3(coord.x, 0.5, coord.z) # TODO: Pick y value from ground or obstacle

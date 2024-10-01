@@ -9,12 +9,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101261, 0.0411444, -0.0409
 script = ExtResource("1_uk1ai")
 GroundScene = ExtResource("2_6pxsw")
 ObstacleScene = ExtResource("3_bq0al")
-obstacle_density = 0.8
-obstacle_max_height = 2.261
+obstacle_density = 1.0
+obstacle_max_height = 2.451
 obstacle_min_height = 1.076
-rng_seed = 15
+rng_seed = 12
 foreground_color = Color(0.466667, 0.952941, 0.498039, 1)
 background_color = Color(1, 0.815686, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.739468, 0.529124, -0.416191, 0.00859971, 0.61076, 0.791769, 0.673137, -0.589067, 0.447087, -6.90061, 17.5089, 7.39921)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
