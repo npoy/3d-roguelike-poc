@@ -49,13 +49,9 @@ var shader_material: ShaderMaterial
 		update_map_center()
 		generate_map()
 		
-@export var save_level: bool:
-	get: return save_level
-	set(value):
-		var packed_scene = PackedScene.new()
-		packed_scene.pack(level)
-		var scene_resource_path = "res://Level/LevelGenerator/Levels/%s.tscn" % level_name
-		ResourceSaver.save(packed_scene, scene_resource_path)
+@export var save: bool:
+	get: return save
+	set(value): save_level()
 
 var map_coords: Array = []
 var obstacle_map: Array = []
@@ -102,11 +98,6 @@ func generate_map() -> void:
 	update_obstacle_material()
 	add_obstacles()
 
-#func clear_map() -> void:
-	#for node in get_children():
-		#if node is CSGBox3D:
-			#node.queue_free()
-
 func clear_map() -> void:
 	for node in get_children():
 		if node is CSGBox3D:
@@ -120,9 +111,26 @@ func remove_csg_boxes_in_node(node: Node3D) -> void:
 		if child is CSGBox3D:
 			child.queue_free()
 
+func save_level() -> void:
+	var packed_scene = PackedScene.new()
+	"""
+		- Moving children to the level and then back to the map
+		- ground.tscn has got the default transform and position from the PackedScene
+		  instead of the actual position configured at creation.
+		  Didn't happen the same for obstacles, why?
+	"""
+	
+	for child in level.get_children():
+		child.owner = level
+	packed_scene.pack(level)
+	var scene_resource_path = "res://Level/LevelGenerator/Levels/%s.tscn" % level_name
+	ResourceSaver.save(packed_scene, scene_resource_path)
+	for child in level.get_children():
+		child.owner = self
+
 func add_level() -> void:
 	level = Node3D.new()
-	level.name = "Level"
+	level.name = "Level" # TODO: Why does it not set the name sometimes?
 	add_child(level)
 	level.owner = self
 			

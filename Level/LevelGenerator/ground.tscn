@@ -3,7 +3,6 @@
 [ext_resource type="Material" uid="uid://bck5r6c8y4ytx" path="res://Level/level_grid.tres" id="1_y786q"]
 
 [node name="Ground" type="CSGBox3D" groups=["World"]]
-transform = Transform3D(1, 0, 0, 0, 0.425, 0, 0, 0, 1, 4.99616, 0, -4.00204)
 use_collision = true
 collision_layer = 9
 size = Vector3(50, 1, 50)
